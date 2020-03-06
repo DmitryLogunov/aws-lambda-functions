@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$comment": "JSON Schema for customer table",
+  "$id": "customer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [],
+  "properties": {
+    "id": {
+      "type": "string",
+      "primary": true
+    },
+    "uid": {
+      "type": "string"
+    },
+    "pod": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "alias": {
+        "rcsredb.accounts": "title"
+      }
+    },
+    "status": {
+      "type": "string"
+    },
+    "editor": {
+      "type": "string"
+    },
+    "last_modified": {
+      "type": "string",
+      "alias": {
+        "rcsredb.accounts": "updated_at"
+      }
+    },
+    "last_synced": {
+      "type": "string"
+    },
+    "major": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "alias": {
+        "rcsredb.accounts": "email"
+      }
+    },
+    "mobile": {
+      "type": "string",
+      "alias": {
+        "rcsredb.accounts": "phone"
+      }
+    },
+    "retry": {
+      "type": "string"
+    },
+    "is_test": {
+      "type": "string"
+    },
+    "mailbox_id": {
+      "type": "string"
+    }
+  }
+}

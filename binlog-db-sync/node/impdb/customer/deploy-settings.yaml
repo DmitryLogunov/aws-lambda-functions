@@ -1,0 +1,27 @@
+FunctionName: "platform-binlog-db-sync-impdb-customer"
+Runtime: "nodejs10.x"
+Handler: "dist/src/index.handler"
+Timeout: 3
+MemorySize: 128
+Environment:
+  Variables:
+    - 
+      name: "DB_USER"
+      type: "secret"
+      configurationPath: "dbSettings.user"
+    - 
+      name: "DB_HOST"
+      type: "secret"
+      configurationPath: "dbSettings.host"   
+    - 
+      name: "DB_PASSWORD"
+      type: "secret"
+      configurationPath: "dbSettings.password"     
+    - 
+      name: "DB_CONNECTIONS_LIMIT"
+      type: "value"
+      value: "1"     
+Layers: 
+  -
+    configurationPath: "awsLambda.layers.binlogDBSyncModules"
+

@@ -1,0 +1,45 @@
+{
+  "version": "1.0.1",
+  "main": "./dist/index.js",
+  "author": "SRE",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "start:dev": "node ./dist/src/index.js",
+    "start:debug": "node --inspect-brk ./dist/src/index.js",
+    "start": "mkdir logs; forever start -p ./ -l logs/$(date +%d-%m-%y-%T.log) dist/src/index.js --max-old-space-size=2096",
+    "stop": "forever stop dist/src/index.js",
+    "restart": "yarn stop; yarn start",
+    "build": "rm -rf ./dist && ./node_modules/typescript/bin/tsc && rm -rf ./dist/tests",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.ts' && prettier --write 'src/**/*.ts' 'tests/**/*.ts'",
+    "test": "jest --verbose",
+    "test:debug": "yarn build && node --inspect-brk node_modules/.bin/jest --runInBand",
+    "git:add": "yarn lint && yarn test --silent && git add --all",
+    "doc": "./node_modules/typedoc/bin/typedoc -out ./docs --theme node_modules/typedoc-clarity-theme/bin --includes 'mdDocs/' --readme maindoc.md"
+  },
+  "dependencies": {
+    "promise-mysql": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/mysql": "^2.15.5",
+    "@types/node": "^11.13.4",
+    "jest": "^24.7.1",
+    "randomstring": "^1.1.5",
+    "faker": "^4.1.0",
+    "setenv": "^1.0.3",
+    "smid": "^0.1.1",
+    "sqlite3": "^4.0.6",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typedoc": "^0.14.2",
+    "typedoc-clarity-theme": "^1.1.0",
+    "typescript": "^3.4.2",
+    "uniqid": "^5.0.3"
+  },
+  "_moduleAliases": {
+    "@": "dist"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": "1.0.1",
+  "main": "./dist/index.js",
+  "author": "SRE",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "promise-mysql": "^3.3.1"
+  }
+}
